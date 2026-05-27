@@ -1,0 +1,87 @@
+import socket
+import network
+import time
+from machine import Pin
+
+# Unesite podatke za svoju Wi-Fi mrežu.
+ssid = 'TVOJ_SSID'
+password = 'TVOJA_LOZINKA'
+
+# Postavljanje Wi-Fi stanice
+sta = network.WLAN(network.STA_IF)
+sta.active(True)
+
+print('Povezivanje na Wi-Fi...')
+sta.connect(ssid, password)
+
+# Čekanje na konekciju
+timeout = 15
+while not sta.isconnected() and timeout > 0:
+    time.sleep(1)
+    timeout -= 1
+
+if sta.isconnected():
+    print('Veza uspješna')
+    print(sta.ifconfig())
+else:
+    print('Wi-Fi nije povezan. Provjerite SSID i lozinku.')
+
+led = Pin(2, Pin.OUT)
+
+
+def web_page():
+    if led.value() == 1:
+        gpio_state = 'UKLJUCENA'
+    else:
+        gpio_state = 'ISKLJUCENA'
+
+    html = """<html>
+  <head>
+    <title>WiFi Prgomet</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='icon' href='data:,'>
+    <style>
+      html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center; }
+      h1 { color: #0F3376; padding: 2vh; }
+      p { font-size: 1.5rem; }
+      .button { display: inline-block; background-color: #e7bd3b; border: none; border-radius: 4px; color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer; }
+      .button2 { background-color: #4286f4; }
+    </style>
+  </head>
+  <body>
+    <h1>PRGOMET WIFI LED</h1>
+    <p>GPIO stanje: <strong>""" + gpio_state + """</strong></p>
+    <p><a href='/?led=on'><button class='button'>UKLJUCENO</button></a></p>
+    <p><a href='/?led=off'><button class='button button2'>ISKLJUCENO</button></a></p>
+  </body>
+</html>"""
+    return html
+
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('', 80))
+s.listen(5)
+
+print('Web server pokrenut. Otvorite IP adresu uređaja u pregledniku.')
+
+while True:
+    conn, addr = s.accept()
+    request = conn.recv(1024)
+
+    if request:
+        req = request.decode('utf-8', 'ignore')
+        print('Zahtjev:', req.split('\n')[0])
+
+        if '/?led=on' in req:
+            led.value(1)
+        elif '/?led=off' in req:
+            led.value(0)
+
+        response = web_page()
+        conn.sendall('HTTP/1.1 200 OK\r\n')
+        conn.sendall('Content-Type: text/html; charset=utf-8\r\n')
+        conn.sendall('Connection: close\r\n\r\n')
+        conn.sendall(response.encode('utf-8'))
+
+    conn.close()
+
