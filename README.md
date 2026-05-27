@@ -28,9 +28,7 @@ password = 'MOJA_LOZINKA'
 
 ## Foto dokumentacija
 U mapi `images/` nalaze se screenshotovi iz Thonny koji dokumentiraju:
-- spajanje uređaja na Wi-Fi
-- prikaz IP adrese u Thonny konzoli
-- rad web sučelja za upravljanje LED-om
+-Flashanje:
 
 ![Thonny screenshot 1](images/Thonny0.png)
 ![Thonny screenshot 2](images/Thonny1.png)
