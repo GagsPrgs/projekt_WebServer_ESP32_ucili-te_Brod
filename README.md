@@ -27,13 +27,55 @@ password = 'MOJA_LOZINKA'
 4. Otvorite tu adresu u pregledniku i kliknite gumbe za uključivanje ili isključivanje LED‑a.
 
 ## Foto dokumentacija
-U mapi `images/` nalaze se screenshotovi iz Thonny koji dokumentiraju:
+U mapi `images/` nalaze se screenshotovi iz Thonny, VSC-a, preglednika i GitHub-a koji dokumentiraju:
+
 -Flashanje:
 
-![Thonny screenshot 1](images/Thonny0.png)
-![Thonny screenshot 2](images/Thonny1.png)
-![Thonny screenshot 3](images/Thonny2.png)
-![Thonny screenshot 4](images/Thonny3.png)
+![Thonny prikaz spremanja firmwarea na ESP32](images/Thonny0.png)
+
+![Thonny prikaz pokretanja uređaja nakon spremanja](images/Thonny1.png)
+
+![Thonny prikaz terminala s porukama pokretanja](images/Thonny2.png)
+
+![Thonny prikaz uspješnog spajanja uređaja](images/Thonny3.png)
+
+-Spajanje:
+
+![Thonny kod za spajanje na Wi-Fi](images/Thonny4.png)
+
+![Thonny konzola s IP adresom uređaja](images/Thonny5.png)
+
+![Unošenje WiFi SSID i password u Thonny](images/Thonny-unos.png)
+
+![Thonny uspješno spajanje na Wi-Fi](images/Thonny-uspiješno%20spajanje.png)
+
+-Izgled, upute, ostalo:
+
+![Web sučelje ESP32 na desktopu](images/Web%20Server%20i%20ESP32.jpg)
+
+![Web sučelje ESP32 na desktopu — druga varijanta](images/Web%20Server%20i%20ESP32%201.jpg)
+
+![Web sučelje na mobitelu](images/Web%20Server%20Mob1.jpg)
+
+![LED na uređaju — fotografija 1](images/Web%20Server-LED%20Na%20Ure%C4%91aju%201.jpg)
+
+![LED na uređaju — fotografija 2](images/Web%20Server-LED%20Na%20Ure%C4%91aju.jpg)
+
+![Web sučelje na mobitelu — varijanta](images/Web%20Server%20Mob.jpg)
+
+![Postavljanje i pushanje na GitHub](images/Postavljanje%20i%20pushanje%20na%20GitHub.png)
+
+![Snimka zaslona uređivanja i pripreme za push](images/Snimka%20zaslona%202026-05-27%20172331.png)
+
+![Uređivanje u VSC i commit poruke](images/Ure%C4%91ivanje%20i%20ispravci%20u%20VSC-u,%20commitanja%20i%20pripreme%20za%20pushanje.png)
+
+![Web server na desktop prikazu](images/Web%20Server-%20Desktop.png)
+
+![Završni izgled web sučelja — AI dizajn 1](images/Završni%20izgled%20web%20sučelja%20izra%C4%91en%20uz%20pomo%C4%87%20AI-a%201.png)
+
+![Završni izgled web sučelja — AI dizajn 2](images/Završni%20izgled%20web%20sučelja%20izra%C4%91en%20uz%20pomo%C4%87%20AI-a.png)
+
+
 
 ## Primjer Git naredbi
 
