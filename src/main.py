@@ -38,20 +38,44 @@ def connect_wifi(ssid, password, timeout=15):
 def web_page():
     gpio_state = 'UKLJUĆENA' if led.value() == 1 else 'ISKLJUČENA'
     html = """<html>
- <head>
+<head>
     <meta charset='utf-8'/>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>ESP32 WiFi LED</title>
     <style>
-      body { font-family: system-ui, -apple-system, sans-serif; text-align:center; background:#f2eded; color:#8b2635; margin:0; padding:20px; }
-      .container { max-width:400px; margin:40px auto; padding:30px; background:#faf8f8; border-radius:16px; border:2px solid #d9939d; box-shadow:0 4px 15px rgba(139,38,53,0.08); }
-      h1 { color:#6b1d29; font-size:24px; margin-bottom:10px; }
-      p { font-size:16px; color:#a64253; }
-      strong { color:#fff; background:#8b2635; padding:4px 10px; border-radius:6px; font-size:14px; text-transform:uppercase; }
+      body { 
+        font-family: system-ui, -apple-system, sans-serif; 
+        text-align:center; 
+        /* Fina tamnosiva podloga s radijalnim efektom sjaja u sredini */
+        background-color: #12131a;
+        background-image: 
+          radial-gradient(circle at center, rgba(139, 38, 53, 0.15) 0%, transparent 70%),
+          /* CSS uzorak paukove mreže / digitalne mreže poslužitelja */
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 100% 100%, 25px 25px, 25px 25px;
+        color: #fca5a5; 
+        margin:0; 
+        padding:20px; 
+      }
+      .container { 
+        max-width:400px; 
+        margin:40px auto; 
+        padding:30px; 
+        /* Poluprozirna tamna kartica koja propušta uzorak mreže u pozadini */
+        background: rgba(26, 27, 38, 0.85); 
+        border-radius: 16px; 
+        border: 2px solid #ef4444; 
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(239, 68, 68, 0.2);
+        backdrop-filter: blur(4px);
+      }
+      h1 { color:#f87171; font-size:24px; margin-bottom:10px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+      p { font-size:16px; color:#fca5a5; }
+      strong { color:#fff; background:#ef4444; padding:4px 10px; border-radius:6px; font-size:14px; text-transform:uppercase; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
       .btn-group { margin-top:25px; }
-      .button { display:inline-block; background:#2563eb; color:#fff; padding:14px 28px; margin:8px; border-radius:12px; text-decoration:none; font-weight:600; font-size:15px; letter-spacing:0.5px; transition:0.2s ease; box-shadow:0 4px 12px rgba(37,99,235,0.3); }
+      .button { display:inline-block; background:#2563eb; color:#fff; padding:14px 28px; margin:8px; border-radius:12px; text-decoration:none; font-weight:600; font-size:15px; letter-spacing:0.5px; transition:0.2s ease; box-shadow:0 4px 15px rgba(37,99,235,0.4); }
       .button:active { transform:scale(0.96); }
-      .button.off { background:#dc2626; box-shadow:0 4px 12px rgba(220,38,38,0.3); }
+      .button.off { background:#dc2626; box-shadow:0 4px 15px rgba(220,38,38,0.4); }
     </style>
   </head>
   <body>
