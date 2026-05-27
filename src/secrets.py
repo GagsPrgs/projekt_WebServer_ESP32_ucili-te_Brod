@@ -1,5 +1,5 @@
-"""Wi-Fi credentials for the ESP32 project.
-Edit these values before uploading to the board.
+"""Wi-Fi vjerodajnice za ESP32 projekt.
+Uredite ove vrijednosti prije prijenosa na ploču.
 """
 
 ssid = 'TVOJ_SSID'
